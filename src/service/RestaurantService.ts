@@ -44,6 +44,10 @@ export class RestaurantService {
             const listRestaurantResponse : Restaurant[] = dataJson.data;
             console.log(listRestaurantResponse)
             for (const item of listRestaurantResponse) {
+                if(item.imageList === '')
+                    {
+                        item.imageList = 'src/assets/fine_dinning_background.jpg';
+                    }
                 listRestaurant.push(item);
             }
         }

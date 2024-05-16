@@ -12,6 +12,7 @@ const props = {listRestaurant : listRestaurant};
 	<head>
 		<meta charset="utf-8" />
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>FooDrink</title>
@@ -35,11 +36,17 @@ const props = {listRestaurant : listRestaurant};
 			<div class="welcome-layout">
 				<a>The best fine dining place</a>
 			</div>
-			<div class="restaurant-view">
+			<div >
 				{
-					props.listRestaurant.map( item=> 
+					props.listRestaurant.map( item => 
 						<div>
-							
+							<div class="card" style="width: 18rem;">
+								<img src={item.imageList} class="card-img-top">
+								<div class="card-body">
+									<h5 class="card-title">{item.restaurantName}</h5>
+									<p class="card-text">{item.address}</p>
+								</div>
+							</div>
 						</div>
 					)
 				}
