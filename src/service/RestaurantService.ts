@@ -64,9 +64,11 @@ export class RestaurantService {
     }
 
     public async GetRestaurantById(id: string): Promise<Restaurant> {
-        const urlRequest = this.url + id;
+        const endPoint = 'GetRestaurantById/' + id;
+        const urlRequest = this.url + endPoint;
         const response = await fetch(urlRequest);
         const restaurantResponse = await response.json() as Restaurant;
         return restaurantResponse;
     }
+    
 }

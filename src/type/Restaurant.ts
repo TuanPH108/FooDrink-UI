@@ -7,7 +7,7 @@ export class Restaurant {
     city!: string
     country!: string
     hotline!: string
-    averageRatin!: number
+    averageRating!: number
     imageList!: string
     totalRevenue!: string
     dailyRevenue!: string
