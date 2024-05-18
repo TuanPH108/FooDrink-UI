@@ -10,3 +10,4 @@ export class User {
     image: string = '';
     restaurantId: string = '';
 }
+
