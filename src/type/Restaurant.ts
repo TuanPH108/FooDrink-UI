@@ -22,6 +22,10 @@ export class Restaurant {
     pageIndex! : number;
     searchString! : string;
   }
+  export class RestaurantSearchString{
+    searchString : string = '';
+    data! : Restaurant[];
+  }
 
   export class RestaurantLocation{
     location : string = '';

@@ -32,6 +32,30 @@ export class RestaurantService {
         return restaurants;
     }
 
+    public async RestaurantSearchString(searchString: string): Promise<Restaurant[]> {
+        const endPoint: string = 'https://foo.dangthanhquy.io.vn/api/Restaurant/GetListRestaurant';
+        const restaurants: Restaurant[] = [];
+    
+        try {
+            const urlRequest: string = this.url + endPoint + '&SearchingString=' + encodeURIComponent(searchString);
+            const response = await fetch(urlRequest);
+    
+            if (response.ok) {
+                const dataJson = await response.json() as RestaurantPaginationResponse;
+                for (const item of dataJson.data) {
+                    restaurants.push(item);
+                }
+            } else {
+                console.error('Request failed with status:', response.status);
+            }
+        } catch (error) {
+            console.error('Error while fetching data:', error);
+        }
+    
+        return restaurants;
+    }
+    
+
     public async GetListRestaurant(): Promise<Restaurant[]> {
         const endPoint = 'https://foo.dangthanhquy.io.vn/api/Restaurant/GetListRestaurant';
         const urlRequest = this.url + endPoint;
@@ -64,7 +88,7 @@ export class RestaurantService {
     }
 
     public async GetRestaurantById(id: string): Promise<Restaurant> {
-        const endPoint = 'GetRestaurantById/' + id;
+        const endPoint = 'GetRestaurantById/' + id; 
         const urlRequest = this.url + endPoint;
         const response = await fetch(urlRequest);
         const restaurantResponse = await response.json() as Restaurant;
