@@ -7,7 +7,7 @@
 
 :root {
   --app-bg: #101827;
-  --sidebar: rgba(21, 30, 47,1);
+  --sidebar: rgba(21, 30, 47, 1);
   --sidebar-main-color: #fff;
   --table-border: #1a2131;
   --table-header: #1a2131;
@@ -34,7 +34,8 @@
   --filter-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   height: 100%;
@@ -259,8 +260,7 @@ body {
     order: 2;
   }
 
-  .app-content-actions
-  -actions-wrapper {
+  .app-content-actions -actions-wrapper {
     padding-bottom: 16px;
     order: 1;
   }
@@ -351,7 +351,7 @@ body {
 }
 
 .filter-menu:before {
- 
+
   content: '';
   position: absolute;
   width: 0;
@@ -496,6 +496,7 @@ body {
 }
 
 @media screen and (max-width: 520px) {
+
   .tableView .product-cell.category,
   .tableView .product-cell.sales {
     display: none;
@@ -562,8 +563,7 @@ body {
 
 .status.active {
   color: #2ba972;
-  background-color: rgba(43
-  169, 114, 114, 0.1);
+  background-color: rgba(43 169, 114, 114, 0.1);
 }
 
 .status.inactive {
@@ -697,4 +697,376 @@ body {
   .pagination {
     margin-top: 16px;
   }
+}
+
+/*Details*/
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Montserrat:300,400,700,800|Open+Sans:300');
+
+
+.main {
+  max-width: 720px;
+  margin: 5% auto;
+}
+
+.card {
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.3);
+  transition: 200ms;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card__title {
+  display: flex;
+  align-items: center;
+  padding: 30px 40px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card__title h3 {
+  flex: 0 1 200px;
+  text-align: right;
+  margin: 0;
+  color: #252525;
+  font-family: sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.card__title .icon {
+  flex: 1 0 10px;
+  background: #115dd8;
+  color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  transition: 200ms;
+}
+
+.card__title .icon a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.card__title .icon:hover {
+  background: #252525;
+}
+
+.card__body {
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.card__body .half {
+  box-sizing: border-box;
+  padding: 0 15px;
+  flex: 1 0 50%;
+}
+
+.card__body .featured_text h1 {
+  margin: 0;
+  padding: 0;
+  font-weight: 800;
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  color: #181e28;
+}
+
+.card__body .featured_text p.sub {
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: #686e77;
+  font-weight: 300;
+  margin-bottom: 5px;
+}
+
+.card__body .featured_text p.price {
+  font-family: "Fjalla One", sans-serif;
+  color: #252525;
+  font-size: 20px;
+}
+
+.card__body .image {
+  padding-top: 15px;
+  width: 100%;
+}
+
+.card__body .image img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.card__body .description p {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  line-height: 27px;
+  font-size: 16px;
+  color: #555;
+}
+
+.card__body span.stock {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  color: #a1cc16;
+}
+
+.card__body .reviews .stars {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card__body .reviews .stars li {
+  display: inline-block;
+}
+
+.card__body .reviews .stars li .fa {
+  color: #f7c01b;
+}
+
+.card__body .reviews span {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  margin-left: 5px;
+  color: #555;
+}
+
+.card__footer {
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ccc;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.card__footer::before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 40px;
+  width: calc(100% - 40px);
+  height: 3px;
+  background: #115dd8;
+  background: linear-gradient(to right, #115dd8 0%, #115dd8 20%, #ddd 20%, #ddd 100%);
+}
+
+.card__footer .recommend p {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 14px;
+  color: #555;
+}
+
+.card__footer .recommend h3 {
+  margin: 0;
+  font-size: 20px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #115dd8;
+}
+
+.card__footer .action button {
+  cursor: pointer;
+  border: 1px solid #115dd8;
+  padding: 14px 30px;
+  border-radius: 200px;
+  color: #fff;
+  background: #115dd8;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  transition: 200ms;
+}
+
+.card__footer .action button:hover {
+  background: #fff;
+  color: #115dd8;
+}
+
+form {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+.form-check {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 1rem; /* Optional: Add margin bottom for spacing */
+}
+
+form .form-group {
+  margin-bottom: 15px;
+}
+
+form .form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+form .form-group input,
+form .form-group textarea {
+  width: calc(100% - 30px);
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form .form-group textarea {
+  resize: vertical;
+}
+
+form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+form .form-actions button {
+  cursor: pointer;
+  border: 1px solid #115dd8;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: #fff;
+  background: #115dd8;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  transition: 200ms;
+}
+
+form .form-actions button:hover {
+  background: #fff;
+  color: #115dd8;
+}
+
+.container {
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 600px;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col-md-4, .col-md-6, .col-md-3 {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-bottom: 15px;
+  flex: 0 0 auto;
+}
+
+.col-md-4 {
+  width: 33.333333%;
+}
+
+.col-md-6 {
+  width: 50%;
+}
+
+.col-md-3 {
+  width: 25%;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.input-group {
+  display: flex;
+}
+
+.input-group-prepend {
+  margin-right: -1px;
+}
+
+.input-group-text {
+  padding: 10px;
+  background-color: #e9ecef;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px #999;
+}
+
+.btn:hover {
+  background-color: #218838;
+}
+
+.btn:active {
+  background-color: #218838;
+  box-shadow: 0 2px #666;
+  transform: translateY(2px);
+}
+
+.form-check-input {
+  margin-right: 10px;
+}
+
+#filePreview {
+  margin-top: 10px;
+}
+
+#filePreview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-bottom: 10px;
 }

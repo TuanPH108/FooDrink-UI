@@ -15,7 +15,9 @@ export class Restaurant {
     isRegistration!: boolean
     status!: boolean
   }
-
+export class RestaurantResponse{
+  data! :Restaurant[];
+}
   export class RestaurantPaginationResponse {
     data! : Restaurant[];
     pageSize! : number;

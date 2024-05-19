@@ -1,23 +1,11 @@
 ---
 import { RestaurantService } from "@service/RestaurantService";
 const restaurantService = new RestaurantService();
+
+
 const listRestaurant = await restaurantService.GetListRestaurant();
-
-
+const props = { listRestaurant: listRestaurant};
 console.log(listRestaurant);
-
-const props = {listRestaurant : listRestaurant};
-
-const searchInput = typeof window !== 'undefined' ? document.getElementById('searchInput') as HTMLInputElement : null;
-const searchButton = typeof window !== 'undefined' ? document.getElementById('searchButton') : null;
-
-if (searchInput && searchButton) {
-    searchButton.addEventListener('click', async () => {
-        const searchString = searchInput.value;
-        const listRestaurant = await restaurantService.RestaurantSearchString(searchString);
-        console.log(listRestaurant);
-    });
-}
 
 ---
 
@@ -28,8 +16,8 @@ if (searchInput && searchButton) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Foo</title>
         <link rel="stylesheet" href="/src/pages/Admin/styles.css">
-        <script src="/src/pages/Admin/Admin.js" type="module"></script>
-      </head>      
+        <script is:inline src="/js/Admin.js" type="text/javascript"></script>
+        </head>      
         <body>
             <div class="app-container">
                 <div class="sidebar">
@@ -104,7 +92,7 @@ if (searchInput && searchButton) {
                   </div>
                 </div>
                 <div class="app-content">
-                  <div class="app-content-header">
+                  <div class="app-content-header"> 
                     <h1 class="app-content-headerText">Restaurant Manager</h1>
                     <button class="mode-switch" title="Switch Theme">
                       <svg class="moon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="24" height="24" viewBox="0 0 24 24">
@@ -129,13 +117,11 @@ if (searchInput && searchButton) {
                             <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
                           </svg></button>
                         <div class="filter-menu">
-                          <label>Category</label>
+                          <label>Registation status</label>
                           <select>
-                            <option>All Categories</option>
-                            <option>Furniture</option>
-                            <option>Decoration</option>
-                            <option>Kitchen</option>
-                            <option>Bathroom</option>
+                            <option>All registation status</option>
+                            <option>Accepted</option>
+                            <option>Rejected</option>
                           </select>
                           <label>Status</label>
                           <select>
@@ -174,7 +160,7 @@ if (searchInput && searchButton) {
                     </div>
                   </div>
                   <div class="products-area-wrapper tableView">
-                    <div class="products-header">
+                    <div class="products-header" style="font-weight: bold">
                         <div class="product-cell ">Restaurant Name</div>
                         <div class="product-cell ">Address</div>
                         <div class="product-cell ">HotLine</div>
@@ -213,10 +199,9 @@ if (searchInput && searchButton) {
                         {item.status ? <span class="status active">Active</span> : <span class="status inactive">Disabled</span>}
                         </div>
                         <div class="product-cell action">
-                            <button class="action-button" onclick="showDetails()" style="color: #007bff; border: 1px solid #d4cece;">Details</button>
+                            <button id="openDetailFormButton" class="action-button" onclick="toggleDetailForm()" style="color: #65aaf8; border: 1px solid #d4cece;">Details</button>
                             <button class="action-button" onclick="editRestaurant()" style="color: #ffc107; border: 1px solid #d4cece;">Edit</button>
                             <button class="action-button" onclick="blockRestaurant()" style="color: #dc3545; border: 1px solid #d4cece;">Block</button>
-
                         </div>
                     </div>
                     ))}

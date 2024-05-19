@@ -1,5 +1,5 @@
 
-import { Restaurant, RestaurantLocation, RestaurantPaginationResponse } from '../type/Restaurant';
+import { Restaurant, RestaurantLocation, RestaurantPaginationResponse, RestaurantResponse } from '../type/Restaurant';
 export class RestaurantService {
     url: string = 'https://foo.dangthanhquy.io.vn/api/Restaurant/';
     public async GetListSearchPagination(pageIndex: number, searchContent: string): Promise<Restaurant[]> {
@@ -87,12 +87,23 @@ export class RestaurantService {
         return locationResponse;
     }
 
-    public async GetRestaurantById(id: string): Promise<Restaurant> {
-        const endPoint = 'GetRestaurantById/' + id; 
-        const urlRequest = this.url + endPoint;
-        const response = await fetch(urlRequest);
-        const restaurantResponse = await response.json() as Restaurant;
-        return restaurantResponse;
+    public async GetRestaurantById(id: string): Promise<Restaurant[ ] | null> {
+        const urlRequest: string = `${this.url}get/${id}`; 
+        
+        try {
+            const response = await fetch(urlRequest);
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch user data');
+            }
+
+            const dataJson = await response.json() as RestaurantResponse;
+
+            return dataJson.data;
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+            return null;
+        }
     }
     
 }

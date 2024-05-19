@@ -6,5 +6,5 @@
       "@service/*": ["src/service/*"] 
     }
   },
-  "include": ["src"]
+  "include": ["src", "public/js/Admin.js"]
 }
