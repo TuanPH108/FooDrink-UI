@@ -7,7 +7,7 @@ export class Restaurant {
     city!: string
     country!: string
     hotline!: string
-    averageRatin!: number
+    averageRating!: number
     imageList!: string
     totalRevenue!: string
     dailyRevenue!: string
@@ -15,12 +15,18 @@ export class Restaurant {
     isRegistration!: boolean
     status!: boolean
   }
-
+export class RestaurantResponse{
+  data! :Restaurant[];
+}
   export class RestaurantPaginationResponse {
     data! : Restaurant[];
     pageSize! : number;
     pageIndex! : number;
     searchString! : string;
+  }
+  export class RestaurantSearchString{
+    searchString : string = '';
+    data! : Restaurant[];
   }
 
   export class RestaurantLocation{

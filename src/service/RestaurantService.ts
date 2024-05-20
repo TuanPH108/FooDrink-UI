@@ -1,5 +1,5 @@
 
-import { Restaurant, RestaurantLocation, RestaurantPaginationResponse } from '../type/Restaurant';
+import { Restaurant, RestaurantLocation, RestaurantPaginationResponse, RestaurantResponse } from '../type/Restaurant';
 export class RestaurantService {
     url: string = 'https://foo.dangthanhquy.io.vn/api/Restaurant/';
     public async GetListSearchPagination(pageIndex: number, searchContent: string): Promise<Restaurant[]> {
@@ -32,6 +32,30 @@ export class RestaurantService {
         return restaurants;
     }
 
+    public async RestaurantSearchString(searchString: string): Promise<Restaurant[]> {
+        const endPoint: string = 'https://foo.dangthanhquy.io.vn/api/Restaurant/GetListRestaurant';
+        const restaurants: Restaurant[] = [];
+    
+        try {
+            const urlRequest: string = this.url + endPoint + '&SearchingString=' + encodeURIComponent(searchString);
+            const response = await fetch(urlRequest);
+    
+            if (response.ok) {
+                const dataJson = await response.json() as RestaurantPaginationResponse;
+                for (const item of dataJson.data) {
+                    restaurants.push(item);
+                }
+            } else {
+                console.error('Request failed with status:', response.status);
+            }
+        } catch (error) {
+            console.error('Error while fetching data:', error);
+        }
+    
+        return restaurants;
+    }
+    
+
     public async GetListRestaurant(): Promise<Restaurant[]> {
         const endPoint = 'https://foo.dangthanhquy.io.vn/api/Restaurant/GetListRestaurant';
         const urlRequest = this.url + endPoint;
@@ -63,10 +87,23 @@ export class RestaurantService {
         return locationResponse;
     }
 
-    public async GetRestaurantById(id: string): Promise<Restaurant> {
-        const urlRequest = this.url + id;
-        const response = await fetch(urlRequest);
-        const restaurantResponse = await response.json() as Restaurant;
-        return restaurantResponse;
+    public async GetRestaurantById(id: string): Promise<Restaurant[ ] | null> {
+        const urlRequest: string = `${this.url}get/${id}`; 
+        
+        try {
+            const response = await fetch(urlRequest);
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch user data');
+            }
+
+            const dataJson = await response.json() as RestaurantResponse;
+
+            return dataJson.data;
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+            return null;
+        }
     }
+    
 }
