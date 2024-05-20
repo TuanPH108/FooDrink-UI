@@ -1,0 +1,72 @@
+.small-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+.introduction-restaurant {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  color: burlywood; 
+  font-family: 'Cinzel', serif; 
+  text-align: center;
+}
+h2{
+  font-size: 5em
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+h1 {
+  color: darkgoldenrod;
+  font-size: 10em; 
+  margin: 0.5em 0;
+}
+
+p {
+  font-size: 1.2em;  
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+}
+
+.col-4 {
+  flex: 1 1 calc(25% - 20px); 
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.col-4 img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px; 
+  transition: transform 0.3s ease-in-out;
+}
+
+.col-4 h4 {
+  font-size: 18px;
+  margin: 10px 0 5px;
+  text-align: center;
+}
+
+.col-4 p {
+  font-size: 14px;
+  color: #777;
+  text-align: center;
+}
+
+.col-4:hover {
+  transform: scale(1.05);
+}
+
+.col-4 img:hover {
+  transform: scale(1.1); 
+}

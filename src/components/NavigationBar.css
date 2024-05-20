@@ -1,0 +1,63 @@
+/* Import font-face cho kiểu chữ trung cổ */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+.navbar {
+    background-color: black;
+    color: #5a5a5a; 
+    font-family: 'Cinzel', serif; 
+    padding: 1em 0;
+}
+
+.brand-name {
+    color: goldenrod;
+    font-family: 'Cinzel', serif; 
+    text-align: left; 
+    margin-right: 2em;
+    font-size: 5em;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex-direction: column;
+    text-align: center; 
+}
+
+.navbar-search {
+    margin-left: 5em; 
+}
+
+.navbar-search input[type="text"] {
+    padding: 0.5em;
+    font-size: 1em;
+    border: 1px solid goldenrod;
+    border-radius: 4px;
+    margin-right: 0.5em;
+}
+
+.navbar-search button {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    border: none;
+    background-color: goldenrod;
+    color: #fff; 
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.navbar-auth .btn {
+    padding: 0.5em 1em;
+    font-size: 1em;
+    border: none;
+
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 0.5em;
+    cursor: pointer;
+}
+
+.navbar-auth .btn:hover {
+    background-color: darkgoldenrod; 
+}
