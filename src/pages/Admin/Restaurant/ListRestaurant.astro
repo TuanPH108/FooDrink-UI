@@ -5,7 +5,6 @@ const restaurantService = new RestaurantService();
 
 const listRestaurant = await restaurantService.GetListRestaurant();
 const props = { listRestaurant: listRestaurant };
-console.log(listRestaurant);
 ---
 
 <Adminlayout title = "Restaurant Manager">   
@@ -119,7 +118,7 @@ console.log(listRestaurant);
                   {item.status ? <span class="status active">Active</span> : <span class="status inactive">Disabled</span>}
                   </div>
                   <div class="product-cell action">
-                    <a href="/Admin/Restaurant/DetailRestaurant">       
+                    <a href={"/Admin/Restaurant/" + item.id}>       
                       <button id="openDetailFormButton" class="action-button" onclick="toggleDetailForm()" style="color: #65aaf8; border: 1px solid #d4cece;">Details</button>
                     </a>
                     <a href="/Admin/Restaurant/UpdateRestaurant">

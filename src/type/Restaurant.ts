@@ -8,13 +8,16 @@ export class Restaurant {
     country!: string
     hotline!: string
     averageRating!: number
-    imageList!: string
+    imageList!: string []
     totalRevenue!: string
     dailyRevenue!: string
     monthlyRevenue!: string
     isRegistration!: boolean
     status!: boolean
   }
+export class RestaurantByIdResponse{
+  data!: Restaurant
+}
 export class RestaurantResponse{
   data! :Restaurant[];
 }
