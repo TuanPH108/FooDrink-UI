@@ -60,13 +60,13 @@ if(Astro.request.method === "POST"){
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="fullName">Full Name</label>
-                                        <input type="text" name="fullname" class="form-control" id="fullName" placeholder={restaurant?.restaurantName}>
+                                        <input type="text" name="fullname" class="form-control" id="fullName" value={restaurant?.restaurantName}>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="phone">Phone</label>
-                                        <input type="text" name="phone" class="form-control" placeholder={restaurant?.hotline}>
+                                        <input type="text" name="phone" class="form-control" value={restaurant?.hotline}>
                                     </div>
                                 </div>
                             </div>
@@ -76,31 +76,31 @@ if(Astro.request.method === "POST"){
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="fullName">Country</label>
-                                        <input class="form-control" name="country" placeholder={restaurant?.country}>
+                                        <input class="form-control" name="country" value={restaurant?.country}>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="fullName">Address</label>
-                                        <input class="form-control" name="address" placeholder={restaurant?.address}>
+                                        <input class="form-control" name="address" value={restaurant?.address}>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="ciTy">City</label>
-                                        <input class="form-control" name="city" placeholder={restaurant?.city}>
+                                        <input class="form-control" name="city" value={restaurant?.city}>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="latitude">Latitude</label>
-                                        <input class="form-control" name="latitude" placeholder={restaurant?.latitude}>
+                                        <input class="form-control" name="latitude" value={restaurant?.latitude}>
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="longtitude">Longitude</label>
-                                        <input class="form-control" name="longtitude" placeholder={restaurant?.longitude}>
+                                        <input class="form-control" name="longtitude" value={restaurant?.longitude}>
                                     </div>
                                 </div>
                             </div>
