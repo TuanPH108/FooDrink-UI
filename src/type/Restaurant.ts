@@ -36,5 +36,21 @@ export class RestaurantResponse{
     location : string = '';
     restaurant! : Restaurant;
   }
-  
+
+  export class RestaurantUpdateRequest {
+    id!: string
+    restaurantName!: string
+    latitude!: string
+    longitude!: string
+    address!: string
+    city!: string
+    country!: string
+    hotline!: string
+    isRegistration!: boolean
+  }
+
+  export class ApproveRestaurantRequest {
+    id!: string;
+    isRegistration!: boolean;
+  }
   

@@ -1,5 +1,5 @@
 
-import { Restaurant, RestaurantByIdResponse, RestaurantLocation, RestaurantPaginationResponse, RestaurantResponse } from '../type/Restaurant';
+import { ApproveRestaurantRequest, Restaurant, RestaurantByIdResponse, RestaurantLocation, RestaurantPaginationResponse, RestaurantResponse, RestaurantUpdateRequest } from '../type/Restaurant';
 export class RestaurantService {
     url: string = 'https://foo.dangthanhquy.io.vn/api/Restaurant/';
     public async GetListSearchPagination(pageIndex: number, searchContent: string): Promise<Restaurant[]> {
@@ -101,4 +101,63 @@ export class RestaurantService {
             return null;
         }
     }
+
+    public async DeleteRestaurantById(id : string) : Promise<void> {
+        const endPoint  = this.url + id;
+        const response = await fetch(endPoint, {
+            method: "DELETE",
+        })
+        if(response.status === 204)
+            {
+                alert("Delete Restaurant completely");
+                //Reload page here
+            }
+    }
+
+    public async AddRestaurant(request : Restaurant) : Promise<void> {
+        const endPoint = this.url + "AddRestaurant";
+        const response = await fetch(endPoint, {
+            method: "POST",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body: JSON.stringify(request),
+        });
+        if(response.ok)
+            {
+                alert("Add new restaurant completely")
+                //Reload page here
+            }
+    }
+
+    public async UpdateRestaurant(request: RestaurantUpdateRequest) : Promise<void>{
+        const endPoint = this.url + "UpdateRestaurant";
+        const response = await fetch(endPoint, {
+            method:"PUT",
+            headers:{
+                "Content-Type" : "application/json",
+            },
+            body: JSON.stringify(request),
+        });
+        if(response.ok)
+            {
+                alert("Update restaurant completely");
+            }
+    }
+
+    public async ApproveRestaurant(request: ApproveRestaurantRequest) : Promise<void> {
+        const endPoint = this.url + "approve";
+        const response = await fetch(endPoint, {
+            method : "PUT",
+            headers:{
+                "Content-Type" : "application/json",
+            },
+            body: JSON.stringify(request),
+        })
+        if(response.ok)
+            {
+                alert("Approve completely");
+            }
+    }
+
 }
