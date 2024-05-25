@@ -54,3 +54,16 @@ export class RestaurantResponse{
     isRegistration!: boolean;
   }
   
+
+  export class AddRestaurantRequest{
+    restaurantName!: string
+    latitude!: string
+    longitude!: string
+    address!: string
+    city!: string
+    country!: string
+    hotline!: string
+    username!: string
+    password!: string
+    email!: string
+  }

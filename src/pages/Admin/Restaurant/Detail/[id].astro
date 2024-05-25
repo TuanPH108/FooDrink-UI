@@ -1,10 +1,9 @@
 ---
-import Adminlayout from "src/shares/adminlayout.astro";
-import { RestaurantService } from "@service/RestaurantService";
+import Adminlayout from "../../../../shares/adminlayout.astro";
+import { RestaurantService } from "../../../../service/RestaurantService";
 const { id } = Astro.params;
 const service = new RestaurantService();
 const restaurantDetail = await service.GetRestaurantById(id as string);
-const props = { restaurantDetail: restaurantDetail };
 ---
 
 <Adminlayout title="Restaurant Detail Manager">

@@ -118,10 +118,10 @@ const props = { listRestaurant: listRestaurant };
                   {item.status ? <span class="status active">Active</span> : <span class="status inactive">Disabled</span>}
                   </div>
                   <div class="product-cell action">
-                    <a href={"/Admin/Restaurant/" + item.id}>       
+                    <a href={"/Admin/Restaurant/Detail/" + item.id}>       
                       <button id="openDetailFormButton" class="action-button" onclick="toggleDetailForm()" style="color: #65aaf8; border: 1px solid #d4cece;">Details</button>
                     </a>
-                    <a href="/Admin/Restaurant/UpdateRestaurant">
+                    <a href={"/Admin/Restaurant/UpdateRestaurant/" + item.id}>
                       <button class="action-button" onclick="editRestaurant()" style="color: #ffc107; border: 1px solid #d4cece;">Edit</button>
                     </a>
                       <button class="action-button" onclick="blockRestaurant()" style="color: #dc3545; border: 1px solid #d4cece;">Block</button>

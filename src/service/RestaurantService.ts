@@ -1,5 +1,6 @@
 
-import { ApproveRestaurantRequest, Restaurant, RestaurantByIdResponse, RestaurantLocation, RestaurantPaginationResponse, RestaurantResponse, RestaurantUpdateRequest } from '../type/Restaurant';
+import { AddRestaurantRequest, ApproveRestaurantRequest, Restaurant, RestaurantByIdResponse, RestaurantLocation, RestaurantPaginationResponse, RestaurantUpdateRequest } from '../type/Restaurant';
+
 export class RestaurantService {
     url: string = 'https://foo.dangthanhquy.io.vn/api/Restaurant/';
     public async GetListSearchPagination(pageIndex: number, searchContent: string): Promise<Restaurant[]> {
@@ -114,7 +115,7 @@ export class RestaurantService {
             }
     }
 
-    public async AddRestaurant(request : Restaurant) : Promise<void> {
+    public async AddRestaurant(request : AddRestaurantRequest) : Promise<number> {
         const endPoint = this.url + "AddRestaurant";
         const response = await fetch(endPoint, {
             method: "POST",
@@ -123,15 +124,11 @@ export class RestaurantService {
             },
             body: JSON.stringify(request),
         });
-        if(response.ok)
-            {
-                alert("Add new restaurant completely")
-                //Reload page here
-            }
     }
 
     public async UpdateRestaurant(request: RestaurantUpdateRequest) : Promise<void>{
-        const endPoint = this.url + "UpdateRestaurant";
+        // const endPoint = this.url + "UpdateRestaurant?id=" + request.id as string;
+        const endPoint = this.url +"UpdateRestaurant?id=" + request.id;
         const response = await fetch(endPoint, {
             method:"PUT",
             headers:{
@@ -139,10 +136,6 @@ export class RestaurantService {
             },
             body: JSON.stringify(request),
         });
-        if(response.ok)
-            {
-                alert("Update restaurant completely");
-            }
     }
 
     public async ApproveRestaurant(request: ApproveRestaurantRequest) : Promise<void> {
@@ -159,5 +152,4 @@ export class RestaurantService {
                 alert("Approve completely");
             }
     }
-
 }
