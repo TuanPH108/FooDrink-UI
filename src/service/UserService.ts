@@ -43,5 +43,4 @@ export class UserService{
             body: JSON.stringify(request),
         });
     }
-    public async GetListUser()
 }
