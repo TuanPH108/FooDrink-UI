@@ -1,14 +1,28 @@
 ---
+import { RestaurantService } from "@service/RestaurantService";
+
+const service = new RestaurantService();
+if(Astro.request.method === "POST")
+{
+  const data = await Astro.request.formData();
+  const searchData = data.get("search");
+  const searchingData = await service.RestaurantSearchString(searchData as string);
+  if(searchData)
+  {
+    
+    return Astro.redirect("/ViewSearching");
+  }
+}
 ---
 <link rel="stylesheet" href="src/components/NavigationBar.css">
 <nav class="navbar">
     <div class="navbar-container">      
-      <form class="navbar-search" action="/search" method="get">
-        <input type="text" name="q" placeholder="Search..." aria-label="Search">
+      <form class="navbar-search" method="POST">
+        <input type="text" name="search" placeholder="Search..." aria-label="Search">
         <button type="submit">Search</button>
       </form>
       <div class="navbar-auth">
-        <a href="/login" class="btn btn-login">Login</a>
+        <a href="/Login" class="btn btn-login">Login</a>
         <a href="/create-account" class="btn btn-create-account">Create Account</a>
       </div>
     </div>
