@@ -3,6 +3,11 @@ export class AuthenticationResponse {
     token!: string
 }
 
+export class AuthenticationRequest {
+    username! : string
+    password! : string
+}
+
 export class RegisterRequest{
     username!: string
     password!: string

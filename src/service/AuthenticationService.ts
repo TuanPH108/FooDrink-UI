@@ -2,11 +2,12 @@ import type { AuthenticationResponse, RegisterRequest } from "src/type/Authentic
 
 export class AuthenticationService {
     private url : string = "https://foo.dangthanhquy.io.vn/api/Authentication/";
-    public async Login(username : string, password : string) : Promise<void>{
+    public async Login(username : string, password : string) : Promise<string>{
         const data = {
             "username" : username,
             "password" : password,
         };
+        let responseData! : AuthenticationResponse 
         const endPoint = this.url + "Login"
         const response = await fetch(endPoint, {
             method:"POST",
@@ -17,10 +18,9 @@ export class AuthenticationService {
         });
         if(response.ok)
             {
-                const responseData : AuthenticationResponse = await response.json();
-                localStorage.setItem("accessToken", responseData.token);
-                //Navigation sang trang khac
+                responseData = await response.json();
             }
+        return responseData.token;
     }
 
     public async Register(request: RegisterRequest) : Promise<void> {
@@ -38,4 +38,5 @@ export class AuthenticationService {
                 //navigate to login page
             }
     }
+    
 }
