@@ -5,9 +5,10 @@ const restaurantService = new RestaurantService();
 
 const listRestaurant = await restaurantService.GetListRestaurant();
 const props = { listRestaurant: listRestaurant };
-console.log(listRestaurant);
----
 
+
+---
+<script src="../../EventHandler.ts" type="module"></script>
 <Adminlayout title = "Restaurant Manager">   
     <p>
         <div class="app-content">
@@ -112,20 +113,20 @@ console.log(listRestaurant);
                   </div>
                   <div class="product-cell status-cell">
                       <span class="cell-label">Registration:</span>
-                      {item.isRegistration ? <span class="status active">Accepted</span> : <span class="status inactive">Rejected</span>}
+                      {item.isRegistration ? <span class="status">Accepted</span> : <span class="status">Rejected</span>}
                   </div>
                   <div class="product-cell status-cell">
                   <span class="cell-label">Status:</span>
-                  {item.status ? <span class="status active">Active</span> : <span class="status inactive">Disabled</span>}
+                  {item.status ? <span class="status">Active</span> : <span class="status">Disabled</span>}
                   </div>
                   <div class="product-cell action">
-                    <a href="/Admin/Restaurant/DetailRestaurant">       
+                    <a href={"/Admin/Restaurant/Detail/" + item.id}>       
                       <button id="openDetailFormButton" class="action-button" onclick="toggleDetailForm()" style="color: #65aaf8; border: 1px solid #d4cece;">Details</button>
                     </a>
-                    <a href="/Admin/Restaurant/UpdateRestaurant">
+                    <a href={"/Admin/Restaurant/UpdateRestaurant/" + item.id}>
                       <button class="action-button" onclick="editRestaurant()" style="color: #ffc107; border: 1px solid #d4cece;">Edit</button>
                     </a>
-                      <button class="action-button" onclick="blockRestaurant()" style="color: #dc3545; border: 1px solid #d4cece;">Block</button>
+                      <button class="action-button" id = "active-btn" onclick="EventHandler" style="color: #dc3545; border: 1px solid #d4cece;">Block</button>
                   </div>
               </div>
               ))}
@@ -133,3 +134,4 @@ console.log(listRestaurant);
           </div>
     </p>
 </Adminlayout>
+
