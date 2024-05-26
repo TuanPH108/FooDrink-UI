@@ -1,29 +1,47 @@
-import { User, UserGetByIdResponse, UserResponse, UserGetListResponse, UserAddResponse, UserAddRequest, UserUpdateRequest, UserDeleteRequest } from '../type/User';
+import { AddUserRequest, GetUserByIdResponse, UpdateUserRequest, User } from "src/type/User";
 
-export class UserService {
-    private url: string = 'https://foo.dangthanhquy.io.vn/api/User/';
+export class UserService{
+    private url : string = "https://foo.dangthanhquy.io.vn/api/User/";
 
-    public async GetUserById(Id: string): Promise<UserResponse[]> {
-        const endPoint = 'get/' + Id;
-        const response = await fetch(this.url + endPoint);
-        const responseJson = await response.json() as UserGetByIdResponse;
-        return responseJson.data;
+    public async AddUser(request : AddUserRequest) : Promise<void>{
+        const endPoint = this.url + "add"
+        const response = await fetch(endPoint, {
+            method: "POST",
+            headers: {
+                "Content-Type" : "application/json",
+            },
+            body: JSON.stringify(request),
+        });
     }
-    public async GetAllUser() : Promise<UserResponse[]>{
-        const endPoint = 'getAll';
-        const response = await fetch(this.url + endPoint);
-        const responseJson = await response.json() as UserGetListResponse
-        return responseJson.data; 
+    public async DeleteUser(id : string) : Promise<void>{
+        const endPoint = this.url + "delete/" + id;
+        const response = await fetch(endPoint, {
+            method:"DELETE",
+            headers:{
+                "Content-Type": "application/json",
+            },
+        })
+    }
+    public async GetUserById(id : string) : Promise<User>{
+        const endPoint = this.url + "get/" + id
+        const response = await fetch(endPoint)
+        let responseValue!: GetUserByIdResponse
+        if(response.ok)
+            {
+                responseValue = await response.json() as GetUserByIdResponse;
+            }
+        return responseValue.data[0];
+    }
 
+    public async UpdateUser(request : UpdateUserRequest) : Promise<void>{
+        const endPoint = this.url + "update"
+        const response = fetch(endPoint, {
+            method:"PUT",
+            headers:{
+                "Content-Type":"application/json",
+            },
+            body: JSON.stringify(request),
+        });
     }
-    public async AddUser(request : UserAddRequest) : Promise<UserResponse[]>{
-        
-    }
-    public async UpdateUser(request : UserUpdateRequest) : Promise<UserResponse[]>{
-        
-        
-    }
-    public async DeleteUser(request : UserDeleteRequest) :Promise<>{
-
-    }
+    public async GetListUser()
 }
