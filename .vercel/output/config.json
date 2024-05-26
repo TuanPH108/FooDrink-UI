@@ -1,0 +1,139 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^\\/_image$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/Index\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/Restaurant\\/CreateRestaurant\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/Restaurant\\/Detail\\/([^/]+?)\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/Restaurant\\/ListRestaurant\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/Restaurant\\/UpdateRestaurant\\/([^/]+?)\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/Review\\/DetailReview\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/Review\\/ListReview\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/User\\/CreateUser\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/User\\/DetailUser\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/User\\/ListUser\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Admin\\/User\\/UpdateUser\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/Blog\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/Home\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/js\\/bootsnav\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/js\\/bootstrap\\.min\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/js\\/custom\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/js\\/feather\\.min\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/js\\/jquery\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/js\\/jquery\\.counterup\\.min\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/js\\/slick\\.min\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/js\\/waypoints\\.min\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/Profile\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/Register\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Customer\\/Review\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/EventHandler\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Login\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Restaurant\\/Register\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/Restaurant\\/ViewSearching\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/User\\/user\\/?$",
+			"dest": "_render"
+		},
+		{
+			"src": "^\\/$",
+			"dest": "_render"
+		}
+	]
+}
