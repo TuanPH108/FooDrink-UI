@@ -31,9 +31,7 @@ if (Astro.request.method === "POST")
   addData.country = country as string;
 
   await service.AddRestaurant(addData);
-
 }
-
 ---
 <Adminlayout>
     <form method="POST">
