@@ -89,20 +89,24 @@ export class RestaurantService {
   }
 
   public async GetListRestaurant(): Promise<Restaurant[]> {
-    const endPoint =
-      "https://foo.dangthanhquy.io.vn/api/Restaurant/GetListRestaurant";
-    const urlRequest = this.url + endPoint;
-    let listRestaurant: Restaurant[] = [];
-    const response = await fetch(endPoint);
+    const endPoint: string = "GetListRestaurant";
+    const pageSize: number = 50;
+    const restaurants: Restaurant[] = [];
+    const urlRequest: string =
+      this.url +
+      endPoint +
+      "?PageSize=" +
+      pageSize;
+    const response = await fetch(urlRequest);
 
     if (response.ok) {
       const dataJson = (await response.json()) as RestaurantPaginationResponse;
       const listRestaurantResponse: Restaurant[] = dataJson.data;
       for (const item of listRestaurantResponse) {
-        listRestaurant.push(item);
+        restaurants.push(item);
       }
     }
-    return listRestaurant;
+    return restaurants;
   }
 
   public async GetRestaurantByLocation(
@@ -148,10 +152,6 @@ export class RestaurantService {
     const response = await fetch(endPoint, {
       method: "DELETE",
     });
-    if (response.status === 204) {
-      alert("Delete Restaurant completely");
-      //Reload page here
-    }
   }
 
   public async AddRestaurant(request: AddRestaurantRequest): Promise<void> {
@@ -182,7 +182,7 @@ export class RestaurantService {
   public async ApproveRestaurant(
     request: ApproveRestaurantRequest
   ): Promise<void> {
-    const endPoint = this.url + "approve";
+    const endPoint = this.url + "approve?id=" + request.id;
     const response = await fetch(endPoint, {
       method: "PUT",
       headers: {
@@ -190,8 +190,5 @@ export class RestaurantService {
       },
       body: JSON.stringify(request),
     });
-    if (response.ok) {
-      alert("Approve completely");
-    }
   }
 }

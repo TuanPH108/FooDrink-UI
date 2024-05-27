@@ -1,4 +1,4 @@
-import { AddUserRequest, GetUserByIdResponse, UpdateUserRequest, User } from "src/type/User";
+import { AddUserRequest, GetListUserResponse, GetUserByIdResponse, UpdateUserRequest, User } from "src/type/User";
 
 export class UserService{
     private url : string = "https://foo.dangthanhquy.io.vn/api/User/";
@@ -42,5 +42,16 @@ export class UserService{
             },
             body: JSON.stringify(request),
         });
+    }
+
+    public async GetListUser() : Promise<User[]>{
+        const endPoint = this.url + "getAll"
+        const response = await fetch(endPoint);
+        let responseData! : GetListUserResponse;
+        if(response.ok)
+            {
+                responseData = await response.json() as GetListUserResponse;
+            }
+        return responseData.data;
     }
 }
