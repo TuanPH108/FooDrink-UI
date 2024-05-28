@@ -1,0 +1,63 @@
+---
+import Adminlayout from "src/shares/adminlayout.astro";
+import { UserService } from "@service/UserService";
+import { AddUserRequest } from "src/type/User";
+
+const service = new UserService();
+if (Astro.request.method === "POST")
+{
+  const data = await Astro.request.formData();
+  const userName = data.get("username");
+  const passwordInput = data.get("password");
+  const emailInput = data.get("email");
+  const fullnameInput = data.get("fullname");
+  const phoneNumberInput = data.get("phonenumber");
+  const addressInput = data.get("address");
+
+  const addData = new AddUserRequest();
+  addData.username = userName as string;
+  addData.password = passwordInput as string;
+  addData.email = emailInput as string;
+  addData.fullName = fullnameInput as string;
+  addData.phoneNumber = phoneNumberInput as string;
+  addData.address = addressInput as string;
+
+  await service.AddUser(addData);
+}
+---
+<Adminlayout>
+    <form method="POST">
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault03">Full Name</label>
+            <input type="text" name="fullname" class="form-control" id="validationDefault03" placeholder="City" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault03">User Name</label>
+            <input type="text" name="username" class="form-control" id="validationDefault03" placeholder="City" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault04">Password</label>
+            <input type="text" name="password" class="form-control" id="validationDefault04" placeholder="Address" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Email</label>
+            <input type="text" name="email" class="form-control" id="validationDefault05" placeholder="Hotline" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Phone Number</label>
+            <input type="text" name="phonenumber" class="form-control" id="validationDefault05" placeholder="Hotline" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Address</label>
+            <input type="text" name="address" class="form-control" id="validationDefault05" placeholder="Hotline" required>
+          </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+        <a href="/Admin/User/ListUser">
+          <button type="button" id="submit" name="submit" class="btn btn-secondary">Back</button>
+        </a>
+      </form>
+      <script>
+        
+      </script>
+</Adminlayout>

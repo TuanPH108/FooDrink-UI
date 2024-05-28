@@ -2,7 +2,11 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title> Responsive Registration Form | CodingLab </title>
+=======
+    <title> Registration Form</title>
+>>>>>>> Tuan-Dev
     <link rel="stylesheet" href="/src/pages/style.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -10,6 +14,7 @@
   <div class="container">
     <div class="title">Registration</div>
     <div class="content">
+<<<<<<< HEAD
       <form action="#">
         <div class="user-details">
           <div class="input-box">
@@ -45,6 +50,46 @@
           <input type="radio" name="gender" id="dot-1">
           <input type="radio" name="gender" id="dot-2">
           <input type="radio" name="gender" id="dot-3">
+=======
+      <form method="POST" id="register-form">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Restaurant Name</span>
+            <input type="text" name="restaurantname" placeholder="Enter your Restaurant Name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Address</span>
+            <input type="text" name="address" placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">City</span>
+            <input type="text" name="city" placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Country</span>
+            <input type="text" name="country" placeholder="Enter your country" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Hotline</span>
+            <input type="text" name="hotline" placeholder="Confirm your hotline" required>
+          </div>
+          <div class="input-box">
+            <span class="details">User Name</span>
+            <input type="text" name="username" placeholder="Enter your country" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" name="password" placeholder="Confirm your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" name="confirmpassword" placeholder="Confirm your password again" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" name="email" placeholder="Enter your email" required>
+          </div>
+>>>>>>> Tuan-Dev
         </div>
         <div class="button">
           <input type="submit" value="Register Restaurant Partner">
@@ -52,6 +97,59 @@
       </form>
     </div>
   </div>
+<<<<<<< HEAD
 
+=======
+  <script>
+import type { AddRestaurantRequest } from "src/type/Restaurant";
+         document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("register-form");
+    
+            form!.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form as any);
+            if(formData.get("password") === formData.get("confirmpassword")){
+              const data : AddRestaurantRequest = {
+                  restaurantName : formData.get("restaurantname") as string,
+                  latitude : "100" as string,
+                  longitude: "100" as string,
+                  address : formData.get("address") as string,
+                  city : formData.get("city") as string,
+                  country : formData.get("country") as string,
+                  hotline : formData.get("hotline") as string,
+                  username : formData.get("username") as string,
+                  password : formData.get("password") as string,
+                  email : formData.get("email") as string,
+                };
+                await handleRegister(data);
+            }
+            else{
+              alert("Please enter confirmed password correctly");
+            }
+        });
+        async function handleRegister(data : AddRestaurantRequest) {
+            try {
+                const response = await fetch("https://foo.dangthanhquy.io.vn/api/Restaurant/AddRestaurant", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+                if(response.ok)
+                {
+                  alert("Resgister Success");
+                  window.location.href = '/Login';
+                }
+            } 
+            catch (error) 
+            {
+                console.error("Error when fetching:", error);
+                alert("Register Error ");
+            }
+        }
+    });
+      </script>
+>>>>>>> Tuan-Dev
 </body>
 </html>

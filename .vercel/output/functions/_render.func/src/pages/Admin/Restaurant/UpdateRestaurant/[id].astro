@@ -28,7 +28,11 @@ if(Astro.request.method === "POST"){
     updateRestaurant.longitude = longtitude as string;
     updateRestaurant.city = city as string;
     updateRestaurant.country = country as string;
+<<<<<<< HEAD
     updateRestaurant.isRegistration = true
+=======
+    updateRestaurant.isRegistration = false
+>>>>>>> Tuan-Dev
 
     await service.UpdateRestaurant(updateRestaurant);
 }

@@ -4,11 +4,15 @@ import { RestaurantService } from "../../../../service/RestaurantService";
 const { id } = Astro.params;
 const service = new RestaurantService();
 const restaurantDetail = await service.GetRestaurantById(id as string);
+
+if(Astro.request.method === "POST"){
+    await service.DeleteRestaurantById(id as string);
+}
 ---
 
 <Adminlayout title="Restaurant Detail Manager">
   <div>
-      <form>
+      <form method="POST">
           <main>
             <div class="card">
               <div class="card__title">
@@ -45,15 +49,19 @@ const restaurantDetail = await service.GetRestaurantById(id as string);
                         </a>
                       </div>
                     </div>
+                    <a>
+                        <button type="submit" class="action-button" id = "active-btn" >Block</button>
+                    </a>
                   </div>
+                  
                 </div>
+                
               </div>
+              
             </div>
+            
           </main>
+         
         </form>
   </div>
-<<<<<<< HEAD
 </Adminlayout>
-=======
-</Adminlayout>
->>>>>>> Tuan-Dev

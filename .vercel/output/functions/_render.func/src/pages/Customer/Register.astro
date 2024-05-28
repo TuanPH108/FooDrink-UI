@@ -1,13 +1,20 @@
 ---
 import { UserService } from "@service/UserService"
+<<<<<<< HEAD
 const service = new UserService();
 
+=======
+>>>>>>> Tuan-Dev
 ---
 
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <title> Responsive Registration Form | CodingLab </title>
+=======
+    <title>Registration Form</title>
+>>>>>>> Tuan-Dev
     <link rel="stylesheet" href="/src/pages/style.css">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
@@ -15,6 +22,7 @@ const service = new UserService();
   <div class="container">
     <div class="title">Registration</div>
     <div class="content">
+<<<<<<< HEAD
       <form action="#">
         <div class="user-details">
           <div class="input-box">
@@ -44,6 +52,33 @@ const service = new UserService();
           <div class="input-box">
             <span class="details">Confirm Password</span>
             <input type="text" placeholder="Confirm your password" required>
+=======
+      <form method="POST" id="register-form">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" name="fullname" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" name="username" placeholder="Enter your username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Address</span>
+            <input type="text" name="address" placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" name="password" placeholder="Enter your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" name="confirmpassword" placeholder="Confirm your password" required>
+>>>>>>> Tuan-Dev
           </div>
         </div>
         <div class="gender-details">
@@ -57,6 +92,56 @@ const service = new UserService();
       </form>
     </div>
   </div>
+<<<<<<< HEAD
 
+=======
+  <script>
+import type { RegisterRequest } from "src/type/Authentication";
+
+     document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("register-form");
+
+        form!.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(form as any);
+        if(formData.get("password") === formData.get("confirmpassword"))
+          {
+            const data : RegisterRequest = {
+              username : formData.get("username") as string,
+              password : formData.get("password") as string,
+              email : formData.get("email") as string,
+              fullname : formData.get("fullname") as string,
+              address : formData.get("address") as string
+            };
+            await handleRegister(data);
+          }
+        else{
+          alert("Please type correct confirmed password");
+        }
+    });
+    async function handleRegister(data : RegisterRequest) {
+        try {
+            const response = await fetch("https://foo.dangthanhquy.io.vn/api/Authentication/Register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+            if(response.ok)
+            {
+              alert("Resgister Success");
+              window.location.href = '/Login';
+            }
+        } 
+        catch (error) 
+        {
+            console.error("Error when fetching:", error);
+            alert("Register Error ");
+        }
+    }
+});
+  </script>
+>>>>>>> Tuan-Dev
 </body>
 </html>

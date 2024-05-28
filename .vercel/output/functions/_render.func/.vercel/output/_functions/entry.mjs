@@ -1,5 +1,9 @@
 import { renderers } from './renderers.mjs';
+<<<<<<< HEAD
 import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_DzHdWAoj.mjs';
+=======
+import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_CZp6n7f3.mjs';
+>>>>>>> Tuan-Dev
 import { e as appendForwardSlash, j as joinPaths, t as trimSlashes, f as fileExtension, s as slash, p as prependForwardSlash, g as removeTrailingForwardSlash, h as collapseDuplicateSlashes } from './chunks/astro/assets-service_Cyk9FS0o.mjs';
 import { R as ROUTE_TYPE_HEADER, l as REROUTE_DIRECTIVE_HEADER, A as AstroError, n as ResponseSentError, o as MiddlewareNoDataOrNextCalled, p as MiddlewareNotAResponse, G as GetStaticPathsRequired, q as InvalidGetStaticPathsReturn, t as InvalidGetStaticPathsEntry, u as GetStaticPathsExpectedParams, v as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, N as NoMatchingStaticPathFound, w as PrerenderDynamicEndpointPathCollide, x as ReservedSlotName, y as renderSlotToString, z as renderJSX, B as chunkToString, C as isRenderInstruction, H as LocalsNotAnObject, J as clientLocalsSymbol, K as clientAddressSymbol$1, O as PrerenderClientAddressNotAvailable, Q as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, T as renderPage, V as renderEndpoint, W as ASTRO_VERSION, X as AstroResponseHeadersReassigned, Y as responseSentSymbol$1, Z as REROUTABLE_STATUS_CODES } from './chunks/astro_5Nzo7u0R.mjs';
 import { serialize, parse } from 'cookie';
@@ -2332,6 +2336,7 @@ const createExports = (manifest, { middlewareSecret, skewProtection }) => {
 };
 
 const _page0 = () => import('./chunks/generic_wdhU3J6O.mjs');
+<<<<<<< HEAD
 const _page1 = () => import('./chunks/Index_vEIZISxN.mjs');
 const _page2 = () => import('./chunks/CreateRestaurant_Dk5txXUb.mjs');
 const _page3 = () => import('./chunks/_id__DVf_Su63.mjs');
@@ -2362,38 +2367,74 @@ const _page27 = () => import('./chunks/Register_B0z4RKMO.mjs');
 const _page28 = () => import('./chunks/ViewSearching_D4O5fmPG.mjs');
 const _page29 = () => import('./chunks/user_CTgOFB43.mjs');
 const _page30 = () => import('./chunks/index_BPiQPIRY.mjs');
+=======
+const _page1 = () => import('./chunks/Index_Dgx-MTW_.mjs');
+const _page2 = () => import('./chunks/_idRestaurant__BK8xfEUw.mjs');
+const _page3 = () => import('./chunks/_id__x2vX0pey.mjs');
+const _page4 = () => import('./chunks/CreateRestaurant_C2XmL_Iq.mjs');
+const _page5 = () => import('./chunks/_id__CiezNlRj.mjs');
+const _page6 = () => import('./chunks/ListRestaurant_BLbc5slZ.mjs');
+const _page7 = () => import('./chunks/_index__fhVqY4x8.mjs');
+const _page8 = () => import('./chunks/_id__anSRhiAq.mjs');
+const _page9 = () => import('./chunks/DetailReview_D0Hhj7Ex.mjs');
+const _page10 = () => import('./chunks/ListReview_DhSKi1F5.mjs');
+const _page11 = () => import('./chunks/CreateUser_aOphOgWI.mjs');
+const _page12 = () => import('./chunks/_id__CuW2wxPx.mjs');
+const _page13 = () => import('./chunks/ListUser_CH2mkBAl.mjs');
+const _page14 = () => import('./chunks/_id__80-xWMJk.mjs');
+const _page15 = () => import('./chunks/Blog_CkrwemIg.mjs');
+const _page16 = () => import('./chunks/Home_8QZzG3OM.mjs');
+const _page17 = () => import('./chunks/bootsnav_CflsfF_p.mjs');
+const _page18 = () => import('./chunks/bootstrap_Ci6LqLx_.mjs');
+const _page19 = () => import('./chunks/custom_C9OvunQl.mjs');
+const _page20 = () => import('./chunks/feather_0jjCPrC-.mjs');
+const _page21 = () => import('./chunks/jquery_D6wYv_Z-.mjs');
+const _page22 = () => import('./chunks/jquery.counterup_Cdb4Syyt.mjs');
+const _page23 = () => import('./chunks/slick_A1lv9YU-.mjs');
+const _page24 = () => import('./chunks/waypoints_C5q-yRQU.mjs');
+const _page25 = () => import('./chunks/Profile_Dof6HdCE.mjs');
+const _page26 = () => import('./chunks/Register_C1VRiE-P.mjs');
+const _page27 = () => import('./chunks/Review_RsmZ4LlG.mjs');
+const _page28 = () => import('./chunks/Login_6qKRociX.mjs');
+const _page29 = () => import('./chunks/_id__BDNQIynZ.mjs');
+const _page30 = () => import('./chunks/Register_FTf2cMyt.mjs');
+const _page31 = () => import('./chunks/_SearchString__3n1wnDPt.mjs');
+const _page32 = () => import('./chunks/index_BBnClLo2.mjs');
+>>>>>>> Tuan-Dev
 const pageMap = new Map([
     ["node_modules/astro/dist/assets/endpoint/generic.js", _page0],
     ["src/pages/Admin/Index.astro", _page1],
-    ["src/pages/Admin/Restaurant/CreateRestaurant.astro", _page2],
-    ["src/pages/Admin/Restaurant/Detail/[id].astro", _page3],
-    ["src/pages/Admin/Restaurant/ListRestaurant.astro", _page4],
-    ["src/pages/Admin/Restaurant/UpdateRestaurant/[id].astro", _page5],
-    ["src/pages/Admin/Review/DetailReview.astro", _page6],
-    ["src/pages/Admin/Review/ListReview.astro", _page7],
-    ["src/pages/Admin/User/CreateUser.astro", _page8],
-    ["src/pages/Admin/User/DetailUser.astro", _page9],
-    ["src/pages/Admin/User/ListUser.astro", _page10],
-    ["src/pages/Admin/User/UpdateUser.astro", _page11],
-    ["src/pages/Customer/Blog.astro", _page12],
-    ["src/pages/Customer/Home.astro", _page13],
-    ["src/pages/Customer/js/bootsnav.js", _page14],
-    ["src/pages/Customer/js/bootstrap.min.js", _page15],
-    ["src/pages/Customer/js/custom.js", _page16],
-    ["src/pages/Customer/js/feather.min.js", _page17],
-    ["src/pages/Customer/js/jquery.js", _page18],
-    ["src/pages/Customer/js/jquery.counterup.min.js", _page19],
-    ["src/pages/Customer/js/slick.min.js", _page20],
-    ["src/pages/Customer/js/waypoints.min.js", _page21],
-    ["src/pages/Customer/Profile.astro", _page22],
-    ["src/pages/Customer/Register.astro", _page23],
-    ["src/pages/Customer/Review.astro", _page24],
-    ["src/pages/EventHandler.ts", _page25],
-    ["src/pages/Login.astro", _page26],
-    ["src/pages/Restaurant/Register.astro", _page27],
-    ["src/pages/Restaurant/ViewSearching.astro", _page28],
-    ["src/pages/User/user.astro", _page29],
-    ["src/pages/index.astro", _page30]
+    ["src/pages/Admin/Restaurant/approvement/[idRestaurant].astro", _page2],
+    ["src/pages/Admin/Restaurant/blocking/[id].astro", _page3],
+    ["src/pages/Admin/Restaurant/CreateRestaurant.astro", _page4],
+    ["src/pages/Admin/Restaurant/Detail/[id].astro", _page5],
+    ["src/pages/Admin/Restaurant/ListRestaurant.astro", _page6],
+    ["src/pages/Admin/Restaurant/Pagination/[index].astro", _page7],
+    ["src/pages/Admin/Restaurant/UpdateRestaurant/[id].astro", _page8],
+    ["src/pages/Admin/Review/DetailReview.astro", _page9],
+    ["src/pages/Admin/Review/ListReview.astro", _page10],
+    ["src/pages/Admin/User/CreateUser.astro", _page11],
+    ["src/pages/Admin/User/Detail/[id].astro", _page12],
+    ["src/pages/Admin/User/ListUser.astro", _page13],
+    ["src/pages/Admin/User/UpdateUser/[id].astro", _page14],
+    ["src/pages/Customer/Blog.astro", _page15],
+    ["src/pages/Customer/Home.astro", _page16],
+    ["src/pages/Customer/js/bootsnav.js", _page17],
+    ["src/pages/Customer/js/bootstrap.min.js", _page18],
+    ["src/pages/Customer/js/custom.js", _page19],
+    ["src/pages/Customer/js/feather.min.js", _page20],
+    ["src/pages/Customer/js/jquery.js", _page21],
+    ["src/pages/Customer/js/jquery.counterup.min.js", _page22],
+    ["src/pages/Customer/js/slick.min.js", _page23],
+    ["src/pages/Customer/js/waypoints.min.js", _page24],
+    ["src/pages/Customer/Profile.astro", _page25],
+    ["src/pages/Customer/Register.astro", _page26],
+    ["src/pages/Customer/Review.astro", _page27],
+    ["src/pages/Login.astro", _page28],
+    ["src/pages/Restaurant/Detail/[id].astro", _page29],
+    ["src/pages/Restaurant/Register.astro", _page30],
+    ["src/pages/Restaurant/Search/[SearchString].astro", _page31],
+    ["src/pages/index.astro", _page32]
 ]);
 
 const _manifest = Object.assign(manifest, {
@@ -2402,7 +2443,11 @@ const _manifest = Object.assign(manifest, {
     middleware: onRequest
 });
 const _args = {
+<<<<<<< HEAD
     "middlewareSecret": "2e226ce3-8a7c-4919-b200-2cb53972f137",
+=======
+    "middlewareSecret": "81d3910c-3906-4e7d-be53-d916ac9a36cf",
+>>>>>>> Tuan-Dev
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);
