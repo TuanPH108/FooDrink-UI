@@ -20,13 +20,13 @@ const props = {data : data};
 					<div class="welcome-hero-form">
 						<div class="single-welcome-hero-form">
 							<h3>what?</h3>
-							<form action="index.html">
-								<input type="text" placeholder="Ex: Location, Restaurant, Food" />
+							<form method="POST" id="searchForm" target="_blank">
+								<input id="searchInput" type="text" placeholder="search" name="search" placeholder="Ex: Location, Restaurant, Food" />
 							</form>
 						</div>
 					</div>
 					<div class="welcome-hero-serch">
-						<button class="welcome-hero-btn" onclick="window.location.href='#'">
+						<button id="search-btn" type="submit" class="welcome-hero-btn">
 							 search  <i data-feather="search"></i> 
 						</button>
 					</div>
@@ -115,4 +115,23 @@ const props = {data : data};
 				</div>
 			</div>
 		</section>		
+		<script>
+			const buttonSearch = document.getElementById("search-btn") as HTMLButtonElement;
+			const searchValue = document.getElementById("searchForm") as HTMLInputElement;
+			buttonSearch?.addEventListener("click", (event : MouseEvent) => {
+				const value = searchValue.textContent;
+				window.location.href = "/Restaurant/Search/" + value;
+			})
+
+			document.addEventListener("DOMContentLoaded", () => {
+				const form = document.getElementById("searchForm");
+				form!.addEventListener("submit", async (event) => {
+					event.preventDefault();
+					const formData = new FormData(form as any);
+					const searchValue = formData.get("searchInput");
+					const url = "Restaurant/Search/" + searchValue;
+					
+				})
+			})
+		</script>
 </Customerlayout>

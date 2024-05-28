@@ -13,7 +13,9 @@
     "@astrojs/check": "^0.7.0",
     "@astrojs/node": "^8.2.5",
     "@astrojs/vercel": "^7.6.0",
+    "@types/jwt-decode": "^3.1.0",
     "astro": "^4.9.1",
+    "jwt-decode": "^4.0.0",
     "typescript": "^5.4.5"
   }
 }

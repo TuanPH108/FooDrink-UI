@@ -1,3 +1,9 @@
+---
+import jwt_decode from 'jwt-decode';
+
+---
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -36,20 +42,26 @@
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const form = document.getElementById("login-form");
+        document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("login-form") as HTMLFormElement | null;
 
-        form!.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        const formData = new FormData(form as any);
-        const data = {
-            username: formData.get("username"),
-            password: formData.get("password")
-        };
-        await handleLogin(data);
-    });
-    async function handleLogin(data : any) {
+    if (form) {
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const data = {
+                username: formData.get("username"),
+                password: formData.get("password")
+            };
+            await handleLogin(data);
+        });
+    } else {
+        console.error("Form element not found.");
+    }
+
+    async function handleLogin(data: { username: string | FormDataEntryValue | null, password: string | FormDataEntryValue | null }) {
         try {
             const response = await fetch("https://foo.dangthanhquy.io.vn/api/Authentication/Login", {
                 method: "POST",
@@ -67,31 +79,24 @@
             }
 
             const dataResponse = await response.json();
+            const token = dataResponse.token;
+            const decodedToken = jwt_decode(token);
 
-            if(dataResponse.token!== ""){
-                localStorage.setItem("accessToken", dataResponse.token);
-                localStorage.setItem("role", dataResponse.role);
-                alert("Login Success");
-                if(dataResponse.role === "Customer")
-                {
-                    window.location.href = "/Customer/Home";
-                }
-                else if (dataResponse.role ==="Admin")
-                {
-                    window.location.href="/Admin/Index";
-                }
-                else if(dataResponse.role === "Manager")
-                {
-                    window.location.href="/Manager/Index";
-                }
+            localStorage.setItem("accessToken", token);
+            localStorage.setItem("role", dataResponse.role);
+            localStorage.setItem("userId", decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]);
+
+            alert("Login Success");
+            if(dataResponse.role === "Customer") {
+                window.location.href = "/Customer/Home";
+            } else if (dataResponse.role ==="Admin") {
+                window.location.href="/Admin/Index";
+            } else if(dataResponse.role === "Manager") {
+                window.location.href="/Manager/Index";
             }
-            else{
-                alert("Wrong username or password")
-            }
-           
         } catch (error) {
             console.error("Error when fetching:", error);
-            alert("Login Error ");
+            alert("Login Error");
         }
     }
 });
