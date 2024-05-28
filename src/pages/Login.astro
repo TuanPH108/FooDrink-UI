@@ -68,8 +68,20 @@
 
             const dataResponse = await response.json();
             localStorage.setItem("accessToken", dataResponse.token);
+            localStorage.setItem("role", dataResponse.role);
             alert("Login Success");
-            window.location.href = '/Customer/Home';
+            if(dataResponse.role === "Customer")
+            {
+                window.location.href = "/Customer/Home";
+            }
+            else if (dataResponse.role ==="Admin")
+            {
+                window.location.href="/Admin/Index";
+            }
+            else if(dataResponse.role === "Manager")
+            {
+                window.location.href="/Manager";
+            }
         } catch (error) {
             console.error("Error when fetching:", error);
             alert("Login Error ");
