@@ -45,7 +45,7 @@ export class UserService{
     }
 
     public async GetListUser() : Promise<User[]>{
-        const endPoint = this.url + "getAll"
+        const endPoint = this.url + "getAll?PageSize=100"
         const response = await fetch(endPoint);
         let responseData! : GetListUserResponse;
         if(response.ok)
