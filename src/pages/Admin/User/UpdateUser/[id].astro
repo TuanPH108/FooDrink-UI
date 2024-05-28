@@ -1,52 +1,97 @@
 ---
 import Adminlayout from "src/shares/adminlayout.astro";
+import { UserService } from "@service/UserService";
+import type { UpdateUserRequest } from "src/type/User";
+const {id} = Astro.params;
+const service = new UserService();
+const data = await service.GetUserById(id as string);
+
+if(Astro.request.method==="POST")
+{
+  const formData = await Astro.request.formData();
+  const updateData : UpdateUserRequest = {
+    id : id as string,
+    username : formData.get("username") as string,
+    password : data.password,
+    email : formData.get("email") as string,
+    fullName : formData.get("fullname") as string,
+    phoneNumber : formData.get("phonenumber") as string,
+    address : formData.get("address") as string,
+    favoritedList : data.favoritedList
+  }
+  await service.UpdateUser(updateData);
+}
+
+const props = {data : data};
 ---
 <Adminlayout title = "Restaurant Detail Manager">
-    <p>
-        <form>
-            <main>
-                <div class="card">
-                  <div class="card__title">
-                    <div class="icon">
-                      <a href="#"><i class="fa fa-arrow-left"></i></a>
+  <div class="container">
+    <div class="row gutters">
+        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <div class="card-body">
+                    <div class="account-settings">
+                        <div class="user-profile">
                     </div>
-                    <h3>Restaurant Detail Manager</h3>
-                  </div>
-                  <div class="card__body">
-                    <div class="half">
-                      <div class="featured_text">
-                        <h1>Restaurant name</h1>
-                        <p class="sub">Office Chair</p>
-                        <p class="price">$210.00</p>
-                      </div>
-                      <div class="image">
-                        <img src="https://images-na.ssl-images-amazon.com/images/I/613A7vcgJ4L._SL1500_.jpg" alt="">
-                      </div>
-                    </div>
-                    <div class="half">
-                      <div class="description">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptatem nam pariatur voluptate perferendis, asperiores aspernatur! Porro similique consequatur, nobis soluta minima, quasi laboriosam hic cupiditate perferendis esse numquam magni.</p>
-                      </div>
-                      <span class="stock"><i class="fa fa-pen"></i> In stock</span>
-                      <div class="reviews">
-                        <ul class="stars">
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star"></i></li>
-                          <li><i class="fa fa-star-o"></i></li>
-                        </ul>
-                        <span>(64 reviews)</span>
-                        <div class="card__footer">
-                            <div class="action">
-                              <a href="/Admin/User/ListUser"><button type="button">Back to list</button></a>
-                            </div>
-                          </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </main>
+            </div>
+        </div>
+        <form method="POST">
+            <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="fullName">Full Name</label>
+                                    <input type="text" name="fullname" class="form-control" id="fullName" value={props.data?.fullName}>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="phone">Address</label>
+                                    <input type="text" name="address" class="form-control" value={props.data?.address}>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="fullName">User Name</label>
+                                    <input class="form-control" name="username" value={props.data?.username}>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="fullName">Email</label>
+                                    <input class="form-control" name="email" value={props.data?.email}>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="ciTy">Phone Number</label>
+                                    <input class="form-control" name="phonenumber" value={props.data?.phoneNumber}>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row gutters">
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="text-right">
+                                    <a href="/Admin/User/ListUser">
+                                        <button type="button" class="btn btn-secondary">Cancel</button>
+                                      </a>
+                                    <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
-    </p>
+    </div>
+</div>
 </AdminLayout>

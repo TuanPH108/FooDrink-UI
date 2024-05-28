@@ -1,0 +1,123 @@
+---
+import Adminlayout from "src/shares/adminlayout.astro"
+import { RestaurantService } from "@service/RestaurantService"
+import { RestaurantUpdateRequest } from "src/type/Restaurant";
+
+const {id} = Astro.params;
+const service = new RestaurantService();
+const restaurant = await service.GetRestaurantById(id as string);
+
+if(Astro.request.method === "POST"){
+    const data = await Astro.request.formData();
+
+    const restaurantName = data.get("fullname");
+    const phone = data.get("phone")
+    const address = data.get("address")
+    const city = data.get("city")
+    const latitude = data.get("latitude")
+    const longtitude = data.get("longtitude");
+    const country = data.get("country");
+
+    const updateRestaurant = new RestaurantUpdateRequest();
+
+    updateRestaurant.id = id as string;
+    updateRestaurant.restaurantName = restaurantName as string;
+    updateRestaurant.hotline = phone as string;
+    updateRestaurant.address = address as string;
+    updateRestaurant.latitude = latitude as string;
+    updateRestaurant.longitude = longtitude as string;
+    updateRestaurant.city = city as string;
+    updateRestaurant.country = country as string;
+    updateRestaurant.isRegistration = false
+
+    await service.UpdateRestaurant(updateRestaurant);
+}
+---
+
+<Adminlayout>
+    
+    <div class="container">
+        <div class="row gutters">
+            <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="account-settings">
+                            <div class="user-profile">
+                                <div class="user-avatar">
+                                    <img src={restaurant?.imageList[0]} alt="Restaurant Image"/>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form method="POST">
+                <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="fullName">Full Name</label>
+                                        <input type="text" name="fullname" class="form-control" id="fullName" value={restaurant?.restaurantName}>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="text" name="phone" class="form-control" value={restaurant?.hotline}>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="fullName">Country</label>
+                                        <input class="form-control" name="country" value={restaurant?.country}>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="fullName">Address</label>
+                                        <input class="form-control" name="address" value={restaurant?.address}>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="ciTy">City</label>
+                                        <input class="form-control" name="city" value={restaurant?.city}>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="latitude">Latitude</label>
+                                        <input class="form-control" name="latitude" value={restaurant?.latitude}>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label for="longtitude">Longitude</label>
+                                        <input class="form-control" name="longtitude" value={restaurant?.longitude}>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="text-right">
+                                        <a href="/Admin/Restaurant/ListRestaurant">
+                                            <button type="button" class="btn btn-secondary">Cancel</button>
+                                          </a>
+                                        <button type="submit" name="submit" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</Adminlayout>
