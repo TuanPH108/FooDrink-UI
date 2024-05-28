@@ -1,0 +1,95 @@
+---
+import Adminlayout from "src/shares/adminlayout.astro";
+import { RestaurantService } from "@service/RestaurantService";
+import {AddRestaurantRequest}  from "../../../type/Restaurant";
+
+const service = new RestaurantService();
+if (Astro.request.method === "POST")
+{
+  const data = await Astro.request.formData();
+  const restaurantName = data.get("restaurantName");
+  const city = data.get("city");
+  const address = data.get("address");
+  const hotline = data.get("hotline");
+  const latitude = data.get("latitude");
+  const longtitude = data.get("longtitude");
+  const email = data.get("email");
+  const username = data.get("username");
+  const password = data.get("password");
+  const country = data.get("country");
+
+  const addData = new AddRestaurantRequest();
+  addData.restaurantName = restaurantName as string;
+  addData.city = city as string;
+  addData.address = address as string;
+  addData.hotline = hotline as string;
+  addData.latitude = latitude as string;
+  addData.longitude = longtitude as string;
+  addData.email = email as string;
+  addData.username = username as string;
+  addData.password = password as string;
+  addData.country = country as string;
+
+  await service.AddRestaurant(addData);
+}
+---
+<Adminlayout>
+    <form method="POST">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault01">Full name</label>
+            <input type="text" name="restaurantName" class="form-control" id="validationDefault01" placeholder="Full name" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationDefault02">Last name</label>
+            <input type="text" class="form-control" id="validationDefault02" placeholder="Last name" value="Otto" required>
+          </div>
+          <div class="col-md-4 mb-3">``
+            <label for="validationDefaultUsername">Username</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              </div>
+              <input type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault03">Country</label>
+            <input type="text" name="country" class="form-control" id="validationDefault03" placeholder="City" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="validationDefault03">City</label>
+            <input type="text" name="city" class="form-control" id="validationDefault03" placeholder="City" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault04">Address</label>
+            <input type="text" name="address" class="form-control" id="validationDefault04" placeholder="Address" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Hotline</label>
+            <input type="text" name="hotline" class="form-control" id="validationDefault05" placeholder="Hotline" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Latitude</label>
+            <input type="text" name="latitude" class="form-control" id="validationDefault05" placeholder="Hotline" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Longtitude</label>
+            <input type="text" name="longtitude" class="form-control" id="validationDefault05" placeholder="Hotline" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">User Name</label>
+            <input type="text" name="username" class="form-control" id="validationDefault05" placeholder="Hotline" required>
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="validationDefault05">Password</label>
+            <input type="text" name="password" class="form-control" id="validationDefault05" placeholder="Hotline" required>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+        <a href="/Admin/Restaurant/ListRestaurant">
+          <button type="button" id="submit" name="submit" class="btn btn-secondary">Back</button>
+        </a>
+      </form>
+</Adminlayout>

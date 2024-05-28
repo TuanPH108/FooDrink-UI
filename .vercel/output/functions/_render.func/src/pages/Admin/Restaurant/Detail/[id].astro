@@ -1,0 +1,55 @@
+---
+import Adminlayout from "../../../../shares/adminlayout.astro";
+import { RestaurantService } from "../../../../service/RestaurantService";
+const { id } = Astro.params;
+const service = new RestaurantService();
+const restaurantDetail = await service.GetRestaurantById(id as string);
+---
+
+<Adminlayout title="Restaurant Detail Manager">
+  <div>
+      <form>
+          <main>
+            <div class="card">
+              <div class="card__title">
+                <h3>Restaurant Detail Manager</h3>
+              </div>
+              <div class="card__body">
+                <div class="half">
+                  <div class="featured_text">
+                    <h1>{restaurantDetail?.restaurantName}</h1>
+                  </div>
+                  <div class="image">
+                    <img src={restaurantDetail?.imageList[0]}/> 
+                  </div>
+                </div>
+                <div class="half">
+                  <div class="description">
+                    <p class="sub">{restaurantDetail?.address}</p>
+                  </div>
+                  <span class="stock">
+                    <i class="fa fa-pen" /> Edit
+                  </span>
+                  <div class="reviews">
+                    <ul class="stars">
+                      <li>
+                        <i class="fa fa-star" />
+                      </li>
+                    </ul>
+                    <span>{restaurantDetail?.averageRating}</span>
+                    <span>(64 reviews)</span>
+                    <div class="card__footer">
+                      <div class="action">
+                        <a href="/Admin/Restaurant/ListRestaurant">
+                          <button type="button">Back to list</button>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </form>
+  </div>
+</Adminlayout>
