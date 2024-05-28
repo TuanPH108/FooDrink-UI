@@ -34,15 +34,13 @@
                     Bạn muốn trở thành đối tác nhà hàng? <a href="/Restaurant/Register">Đăng ký ngay</a>
                 </div>
             </form>
-            <button id="btn-submit" type="button">Thử đăng nhập</button>
         </div>
     </div>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("login-form");
-    const testButton = document.getElementById("btn-submit");
+        const form = document.getElementById("login-form");
 
-    form!.addEventListener("submit", async (event) => {
+        form!.addEventListener("submit", async (event) => {
         event.preventDefault();
         const formData = new FormData(form as any);
         const data = {
@@ -51,15 +49,6 @@
         };
         await handleLogin(data);
     });
-
-    testButton?.addEventListener("click", async () => {
-        const testData = {
-            username: "dangthanhquy",
-            password: "dangthanhquy"
-        };
-        await handleLogin(testData);
-    });
-
     async function handleLogin(data : any) {
         try {
             const response = await fetch("https://foo.dangthanhquy.io.vn/api/Authentication/Login", {
@@ -72,17 +61,30 @@
 
             if (!response.ok) {
                 if (response.status === 415) {
-                    throw new Error("Unsupported Media Type. Vui lòng kiểm tra header Content-Type.");
+                    throw new Error("Unsupported Media Type. Check header Content-Type.");
                 }
                 throw new Error("Network response was not ok");
             }
 
             const dataResponse = await response.json();
             localStorage.setItem("accessToken", dataResponse.token);
-            alert("Đăng nhập thành công!");
+            localStorage.setItem("role", dataResponse.role);
+            alert("Login Success");
+            if(dataResponse.role === "Customer")
+            {
+                window.location.href = "/Customer/Home";
+            }
+            else if (dataResponse.role ==="Admin")
+            {
+                window.location.href="/Admin/Index";
+            }
+            else if(dataResponse.role === "Manager")
+            {
+                window.location.href="/Manager";
+            }
         } catch (error) {
-            console.error("Có lỗi xảy ra trong quá trình fetch:", error);
-            alert("Đăng nhập thất bại! " + "that bai me roi");
+            console.error("Error when fetching:", error);
+            alert("Login Error ");
         }
     }
 });

@@ -1,6 +1,7 @@
 export class AuthenticationResponse {
     message!: string
     token!: string
+    role!: string
 }
 
 export class AuthenticationRequest {
