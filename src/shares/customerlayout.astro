@@ -46,7 +46,7 @@
                             >
                                 <i class="fa fa-bars"></i>
                             </button>
-                            <a class="navbar-brand" href="Home"
+                            <a class="navbar-brand" href="/Customer/Home"
                                 >Foo<span>Drink</span></a
                             >
                         </div>
@@ -60,10 +60,7 @@
                                 data-out="fadeOutUp"
                             >
                                 <li class="scroll active">
-                                    <a href="#home">home</a>
-                                </li>
-                                <li class="scroll">
-                                    <a href="#explore">explore</a>
+                                    <a href="/Customer/Home">home</a>
                                 </li>
                                 <li class="scroll">
                                     <a href="/Customer/Blog">blog</a>
@@ -71,26 +68,30 @@
                                 <li class="scroll">
                                     <a href="/Customer/Review">review</a>
                                 </li>
-                                <li class="dropdown">
-                                    <a
-                                        href="#"
-                                        class="dropdown-toggle"
-                                        id="userIcon"
-                                        onclick="toggleDropdown()"
-                                    >
-                                        <i class="fas fa-user"></i>
-                                    </a>
-                                    <select
-                                        class="dropdown-menu"
-                                        id="userDropdown"
-                                        onchange="handleSelectChange(event)"
-                                    >
-                                        <option value="">Select...</option>
-                                        <option value="signin">Sign In</option>
-                                        <option value="register"
-                                            >Register</option
-                                        >
-                                    </select>
+                                <li class="scroll">
+                                    <a href="/Customer/Profile">profile</a>
+                                </li>
+                                <li>
+                                    <a href="/Login" id="Exit">
+                                        <button class="account-info-more">
+                                            <svg
+                                              xmlns="http://www.w3.org/2000/svg"
+                                              width="24"
+                                              height="24"
+                                              viewBox="0 0 24 24"
+                                              fill="none"
+                                              stroke="currentColor"
+                                              stroke-width="2"
+                                              stroke-linecap="round"
+                                              stroke-linejoin="round"
+                                              class="feather feather-log-out"
+                                            >
+                                              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                              <polyline points="16 17 21 12 16 7"></polyline>
+                                              <line x1="21" y1="12" x2="9" y2="12"></line>
+                                            </svg>
+                                          </button>         
+                                        </a>
                                 </li>
                             </ul><!--/.nav -->
                         </div><!-- /.navbar-collapse -->
@@ -105,13 +106,10 @@
         </article>
         <script>
             // Function to toggle the dropdown menu
-            function toggleDropdown() {
-                const dropdown = document.getElementById("userDropdown");
-                if (dropdown) {
-                    dropdown.style.display =
-                        dropdown.style.display === "block" ? "none" : "block";
-                }
-            }
+            const buttonLogout = document.getElementById("Exit") as HTMLElement;
+            buttonLogout.addEventListener("click", (event: MouseEvent) => {
+                localStorage.clear()
+            })
 
             // Function to handle dropdown selection change
             function handleSelectChange(event: Event) {

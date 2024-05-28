@@ -129,14 +129,7 @@
           </li>
         </ul>
         <div class="account-info">
-          <div class="account-info-picture">
-            <img
-              src="https://images.unsplash.com/photo-1527736947477-2790e28f3443?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTE2fHx3b21hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-              alt="Account"
-            />
-          </div>
-          <div class="account-info-name">Monica G.</div>
-          <button class="account-info-more">
+          <button class="account-info-more" id="exit-btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -147,13 +140,13 @@
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              class="feather feather-more-horizontal"
+              class="feather feather-log-out"
             >
-              <circle cx="12" cy="12" r="1"></circle>
-              <circle cx="19" cy="12" r="1"></circle>
-              <circle cx="5" cy="12" r="1"></circle>
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
             </svg>
-          </button>
+          </button>          
         </div>
       </div>
       <article>
@@ -161,6 +154,12 @@
       </article>
     </div>
     <script>
+      const exitButton = document.getElementById("exit-btn") as HTMLButtonElement
+      exitButton.addEventListener("click", (event:MouseEvent) =>{
+        localStorage.clear()
+        window.location.href = "/Login";
+      })
+
       document.addEventListener('DOMContentLoaded', function() {
           const currentPath = window.location.pathname;
           const sidebarItems = document.querySelectorAll('.sidebar-list-item');
