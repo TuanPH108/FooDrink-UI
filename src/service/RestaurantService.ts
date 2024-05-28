@@ -191,4 +191,29 @@ export class RestaurantService {
       body: JSON.stringify(request),
     });
   }
+
+  public async GetRestaurantByJwt(): Promise<Restaurant | null> {
+    const urlRequest: string = 'https://foo.dangthanhquy.io.vn/api/Restaurant/get-restaurant-by-jwt'; 
+    
+    try {
+        const response = await fetch(urlRequest, {
+            method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem("accessToken")
+        }
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch user data');
+        }
+
+        const dataJson = await response.json() as RestaurantByIdResponse;
+
+        return dataJson.data;
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        return null;
+    }
+}
 }
