@@ -54,4 +54,30 @@ export class UserService{
             }
         return responseData.data;
     }
+
+    public async GetUserByJwt(): Promise<User | null> {
+        const urlRequest: string = 'https://foo.dangthanhquy.io.vn/api/User/get-user-by-jwt'; 
+        
+        try {
+            const response = await fetch(urlRequest, {
+                method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': localStorage.getItem("accessToken")
+            }
+            });
+            
+            if (!response.ok) {
+                throw new Error('Failed to fetch user data');
+            }
+    
+            const dataJson = await response.json() as GetUserByIdResponse;
+    
+            return dataJson.data[0];
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+            return null;
+        }
+    }
 }
+
